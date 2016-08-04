@@ -1,3 +1,9 @@
+/**
+ * В стандартный ui autocomplete lобавлена опция selectOnEnter
+ * Когда эта опция установлена в true, событие select срабатывает не только при клике или энтере в выпадающем списке,
+ * но и при нажатии ентер, когда ни одно значение автокомплита не выбрано
+ * В этом случае возвращается объект {_term: 'строка_введённая_в_поле_инпута'}
+
 /*!
  * jQuery UI Autocomplete 1.11.4
  * http://jqueryui.com
@@ -278,7 +284,7 @@ $.widget( "ui.autocomplete", {
 				var item = ui.item.data( "ui-autocomplete-item" ),
 					previous = this.previous;
 
-				if (!item) item = {_term: this._value()}; // попали сюда по ентеру из поля ввода - ни один элемент списка не выбран
+				if (this.options.selectOnEnter && !item) item = {_term: this._value()}; // попали сюда по ентеру из поля ввода - ни один элемент списка не выбран
 
 				// only trigger when focus was lost (click on menu)
 				if ( this.element[ 0 ] !== this.document[ 0 ].activeElement ) {
