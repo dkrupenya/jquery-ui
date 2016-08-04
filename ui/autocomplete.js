@@ -278,7 +278,7 @@ $.widget( "ui.autocomplete", {
 				var item = ui.item.data( "ui-autocomplete-item" ),
 					previous = this.previous;
 
-				if (!item) item = {_term: this.term}; // попали сюда по ентеру из поля ввода - ни один элемент списка не выбран
+				if (!item) item = {_term: this._value()}; // попали сюда по ентеру из поля ввода - ни один элемент списка не выбран
 
 				// only trigger when focus was lost (click on menu)
 				if ( this.element[ 0 ] !== this.document[ 0 ].activeElement ) {
