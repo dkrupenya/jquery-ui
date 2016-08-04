@@ -34,6 +34,7 @@ $.widget( "ui.autocomplete", {
 		autoFocus: false,
 		delay: 300,
 		minLength: 1,
+		selectOnEnter: false, // добавляю эту опцию
 		position: {
 			my: "left top",
 			at: "left bottom",
@@ -115,7 +116,7 @@ $.widget( "ui.autocomplete", {
 					break;
 				case keyCode.ENTER:
 					// when menu is open and has focus
-					if ( this.menu.active ) {
+					if ( this.menu.active  || this.options.selectOnEnter) { // теперь select будет срабатывать при ентере
 						// #6055 - Opera still allows the keypress to occur
 						// which causes forms to submit
 						suppressKeyPress = true;
